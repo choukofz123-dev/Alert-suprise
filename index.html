@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sophia's Surprise ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff5f8f, #ff9a9e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.box {
+    width: 90%;
+    max-width: 430px;
+    padding: 30px 22px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+h1 {
+    color: #ff3366;
+    font-size: 30px;
+}
+
+h2 {
+    color: #ff3366;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+button {
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    background: #ff3366;
+    color: white;
+    font-size: 17px;
+    margin: 8px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+#surprise {
+    display: none;
+}
+
+#final {
+    display: none;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    animation: float 4s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="box">
+
+    <h1>🚨 WAIT SOPHIA! 🚨</h1>
+
+    <p>
+        ⚠️ This is a VERY serious website.
+    </p>
+
+    <p>
+        Only <b>Sophia</b> is authorized to continue. 😌
+    </p>
+
+    <button onclick="openSecret()">
+        🔐 Open Secret
+    </button>
+
+    <div id="surprise">
+
+        <h2>😂 GOTCHA!</h2>
+
+        <p>
+            Sophia... you actually clicked it! 😂
+        </p>
+
+        <p>
+            Congratulations! 🎉
+            You just wasted a few seconds of your life.
+        </p>
+
+        <p>
+            But don't worry...
+            I have prepared a reward for you. 😎❤️
+        </p>
+
+        <button onclick="getReward()">
+            🎁 Get My Reward
+        </button>
+
+    </div>
+
+    <div id="final">
+
+        <h2>🏆 SOPHIA AWARD 🏆</h2>
+
+        <p>
+            After many hours of extremely serious research...
+            🔬😂
+        </p>
+
+        <p>
+            ❤️ Cute: 99%<br>
+            😂 Crazy: 100%<br>
+            😤 Annoying: 200%<br>
+            💖 Special: 1000%
+        </p>
+
+        <h2>🥁 THE FINAL RESULT 🥁</h2>
+
+        <h1>❤️ SOPHIA ❤️</h1>
+
+        <p>
+            You are officially...
+        </p>
+
+        <h2>MY FAVORITE PERSON 😌❤️</h2>
+
+        <p>
+            And unfortunately...
+        </p>
+
+        <h2>YOU'RE STUCK WITH ME 😂❤️</h2>
+
+        <p>
+            🚫 No refunds.<br>
+            🚫 No exchanges.<br>
+            🚫 No escaping. 😂
+        </p>
+
+        <h1>❤️😂❤️</h1>
+
+        <p>
+            Keep smiling, Sophia. 😊
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+function openSecret() {
+
+    document.getElementById("surprise").style.display = "block";
+
+    document.getElementById("box").classList.add("shake");
+
+    setTimeout(function() {
+        document.getElementById("box").classList.remove("shake");
+    }, 500);
+
+    createHearts(20);
+}
+
+function getReward() {
+
+    document.getElementById("final").style.display = "block";
+
+    createHearts(50);
+
+    setTimeout(function() {
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+        });
+    }, 300);
+}
+
+function createHearts(number) {
+
+    for (let i = 0; i < number; i++) {
+
+        let heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        let emojis = ["❤️", "💕", "💖", "😂", "💗"];
+
+        heart.innerHTML =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(function() {
+            heart.remove();
+        }, 5000);
+    }
+}
+
+</script>
+
+</body>
+</html>
